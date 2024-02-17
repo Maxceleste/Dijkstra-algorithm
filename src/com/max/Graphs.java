@@ -1,35 +1,41 @@
 package src.com.max;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class Graphs {
-    
-    HashMap<String, Object[][]> graph = new HashMap<String, Object[][]>();
 
+    String[] nodeList;
+    int nodeCount;
+    ArrayList<Object[][]> fullGraph = new ArrayList<>();
 
-    public void addNode(String nodeName, Object[][] childs) throws Exception{
-        
-        //To-Do: Fazer uma verificação melhor dos childs.
-        if (graph.get(nodeName) != null) throw new Exception("Node already exist");
-        
-        graph.put(nodeName, childs);
+    public Graphs(int nodeCount){
+        nodeList = new String[nodeCount];
+    }
+
+    public void addNode(String nodeName, Object[][] childs){
+        nodeList[nodeCount] = nodeName;
+        fullGraph.add(childs);
+        nodeCount++;
     }
 
     public void graphVisualiser(){
         System.out.println("*****************");
         System.out.println("Graph Visualizer:");
 
-        for (String node : graph.keySet()){
+        for (int i = 0; i < nodeList.length; i++){
+            System.out.println("Node: " + nodeList[i]);
+
+            boolean childExist = fullGraph.get(i).length > 0;
             
-            System.out.println("Node name: " + node);
-            System.out.println("Childs and size:");
+            if (childExist){
+                System.out.println("Childs and size:");
 
-            for (Object[] child : graph.get(node)){
-                System.out.println((String)child[0] + " = " + (String)child[1]);
-            }
+                for (int subI = 0; subI < fullGraph.get(i).length; subI++){
+                    System.out.println((String)fullGraph.get(i)[subI][0] + " = " + (fullGraph.get(i)[subI][1]).toString());
+                }
+            } else System.out.println("No Childs.");
 
-            System.out.println("*****************");
         }
-    }
 
+    }
 }
