@@ -1,15 +1,15 @@
 package src.com.max;
 
 public class Dijkstra {
-    Graphs grafo = new Graphs(4);
+    Graph grafo = new Graph(4);
 
-    Object[][] childInicio = {{"A", (Integer)6},{"B", (Integer)2}};
-    Object[][] childA = {{"fim", (Integer)1}};
-    Object[][] childB = {{"A", (Integer)3},{"fim", (Integer)5}};
-    Object[][] childFim = {};
-
+    Child[] childInicio = {new Child("A", 6), new Child("B", 2)};
+    Child[] childA = {new Child("fim", 1)};
+    Child[] childB = {new Child("fim", 5), new Child("A", 3)};
+    Child[] childFim = {};
+    
     public void runDijkstra(){
-    grafo.addNode("início", childInicio);
+    grafo.addNode("inicio", childInicio);
     grafo.addNode("A", childA);
     grafo.addNode("B", childB);
     grafo.addNode("fim", childFim);
