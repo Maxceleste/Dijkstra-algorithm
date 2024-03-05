@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Graph {
 
     private String[] nodeNames;
-    private ArrayList<Child[]> graphChildren = new ArrayList<>();
+    private ArrayList<Children> graphChildren = new ArrayList<>();
 
     private int nodeCount;
 
@@ -21,10 +21,11 @@ public class Graph {
 
     /**
      * Add a node to the Graph, and the Children of this node. If this node doesn't have a child, is an empty array.
+     * Always consider that the first node added is the beginning of the graph.
      * @param nodeName Name of this node
      * @param children Array of Child to represent the edges.
      */
-    public void addNode(String nodeName, Child[] children){
+    public void addNode(String nodeName, Children children){
         nodeNames[nodeCount++] = nodeName;
         graphChildren.add(children);
     }
@@ -33,27 +34,31 @@ public class Graph {
         return nodeNames;
     }
 
-    public ArrayList<Child[]> getChilds(){
+    public ArrayList<Children> getChildren(){
         return graphChildren;
+    }
+
+    public int getLength(){
+        return nodeNames.length;
     }
 
     /**
      * Show the visual form of the graph.
      */
-    protected void graphVisualiser(){
+    public void graphVisualiser(){
         System.out.println("*****************");
         System.out.println("Graph Visualizer:");
 
         for (int i = 0; i < nodeNames.length; i++){
             System.out.println("Node: " + nodeNames[i]);
 
-            boolean childExist = graphChildren.get(i).length > 0;
+            boolean childExist = graphChildren.get(i) != null;
             
             if (childExist){
                 System.out.println("Childs and size:");
 
-                for (int subI = 0; subI < graphChildren.get(i).length; subI++){
-                    System.out.println(graphChildren.get(i)[subI].getName() + " = " + graphChildren.get(i)[subI].getWeight());
+                for (int subI = 0; subI < graphChildren.get(i).getSize(); subI++){
+                    System.out.println(graphChildren.get(i).getName(subI)+ " = " + graphChildren.get(i).getWeight(subI));
                 }
             } else System.out.println("No Childs.");
 

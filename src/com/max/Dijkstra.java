@@ -1,19 +1,19 @@
 package src.com.max;
 
+import java.util.HashMap;
+
 public class Dijkstra {
-    Graph grafo = new Graph(4);
 
-    Child[] childInicio = {new Child("A", 6), new Child("B", 2)};
-    Child[] childA = {new Child("fim", 1)};
-    Child[] childB = {new Child("fim", 5), new Child("A", 3)};
-    Child[] childFim = {};
-    
-    public void runDijkstra(){
-    grafo.addNode("inicio", childInicio);
-    grafo.addNode("A", childA);
-    grafo.addNode("B", childB);
-    grafo.addNode("fim", childFim);
+    private double infinity = 1.0 / 0.0;
+   
+    static void runDijkstra(Graph graph){
 
-    grafo.graphVisualiser();
+        final int COST_SIZE = graph.getLength() - 1;
+        
+        HashMap<String, Float> cost = new HashMap<String, Float>(COST_SIZE); // Cost table
+        
+        for (int i = 1; i < COST_SIZE + 1; i++){
+            //cost.put(graph.getNodesNames()[i], graph.getChilds()[])
+        }
     }
 }
