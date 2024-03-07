@@ -34,13 +34,31 @@ public class Graph {
         return nodeNames;
     }
 
-    public ArrayList<Children> getChildren(){
-        return graphChildren;
+    public Children[] getChildrenArray(){
+        return graphChildren.toArray(new Children[0]);
     }
 
     public int getLength(){
         return nodeNames.length;
     }
+
+
+    public Children getChildren(String node){
+        int index = 0;
+
+        for (String name : nodeNames){
+            if (name == node) break;
+            index++;
+        }
+
+        if (index + 1 > nodeNames.length) throw new IllegalArgumentException("This node name doesn't exist.");
+
+        return graphChildren.get(index);
+    }
+    public Children getChildren(int index){
+        return graphChildren.get(index);
+    }
+
 
     /**
      * Show the visual form of the graph.

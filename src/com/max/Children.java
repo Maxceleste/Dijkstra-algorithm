@@ -9,9 +9,9 @@ public class Children{
     private double[] weights;
 
     /**
+     * The names and weigth needs to be the same size and order.
      * @param childNames Array of children names
      * @param weights Array of children weigth.
-     * The names and weigth needs to be the same size and order.
      */
     public Children(String[] childNames, double[] weights){
 
@@ -36,7 +36,7 @@ public class Children{
     public String getName(int index){
         return childNames[index];
     }
-    
+
 
     public double getWeight(String childName){
         return weights[getIndex(childName)];

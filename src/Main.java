@@ -8,9 +8,14 @@ public class Main{
 
         Graph grafo = new Graph(4);
 
-        Children childInicio = new Children(new String[]{"A", "B"}, new double[]{6.0, 2.0});
-        Children childA = new Children(new String[]{"fim"}, new double[]{1.0});
-        Children childB = new Children(new String[]{"fim", "A"}, new double[]{5.0, 3.0});
+        Children childInicio = new Children(new String[]{"A", "B"},
+                                            new double[]{6.0, 2.0});
+
+        Children childA = new Children(new String[]{"fim"}, 
+                                       new double[]{1.0});
+                                       
+        Children childB = new Children(new String[]{"fim", "A"},
+                                       new double[]{5.0, 3.0});
         Children childFim = null;
 
         grafo.addNode("inicio", childInicio);
@@ -19,6 +24,10 @@ public class Main{
         grafo.addNode("fim", childFim);
         
         grafo.graphVisualiser();
+
+        Dijkstra d = new Dijkstra();
+
+        d.runDijkstra(grafo, "fim");
     }
     
 }
