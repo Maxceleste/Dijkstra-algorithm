@@ -50,12 +50,11 @@ public class Dijkstra {
 
     private String nextNode (String[] processedNodes, Graph graph){
         String cheapNode = null;
-        List processed = Arrays.asList(processedNodes);
 
         for (String node : graph.getNodesNames()){
 
             boolean isCheaper = cheapNode == null || cost.get(cheapNode) > cost.get(node);
-            boolean notProcessed = !processed.contains(node);
+            boolean notProcessed = !Arrays.asList(processedNodes).contains(node);
 
             if (isCheaper && notProcessed){
                 cheapNode = node;
