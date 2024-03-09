@@ -54,9 +54,7 @@ public class Children{
             if (name == childName) break;
             index++;
         }
-
         if (index + 1 > childNames.length) throw new IllegalArgumentException("This child name doesn't exist.");
-
         return index;
     }
 }

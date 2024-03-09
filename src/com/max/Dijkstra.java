@@ -2,7 +2,6 @@ package src.com.max;
 
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 
 public class Dijkstra {
 
@@ -25,7 +24,7 @@ public class Dijkstra {
             processedNodes[processedCount++] = cheapNode;
         }
 
-        //System.out.println(shortPath(lastNode));
+        printResult(lastNode);
     }
 
     private void updateGeneral(Graph graph, String nodeName){
@@ -96,5 +95,22 @@ public class Dijkstra {
         for (String child : children.getNames()){
             parents.replace(child, nodes[0]);
         }
+    }
+
+    private void printResult(String lastNode){
+
+        String last = lastNode;
+        String path = last;
+        boolean notTheFirstNode = parents.containsKey(last);
+        
+        while (notTheFirstNode){
+            String parent = parents.get(last);
+            path = parent + " - " + path;
+            last = parent;
+            notTheFirstNode = parents.containsKey(last);
+        }
+
+        System.out.println("Shorter path: " + path);
+        System.out.println("Final cost: " + cost.get(lastNode));
     }
 }

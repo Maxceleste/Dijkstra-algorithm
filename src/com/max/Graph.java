@@ -66,9 +66,11 @@ public class Graph {
     public void graphVisualiser(){
         System.out.println("*****************");
         System.out.println("Graph Visualizer:");
+        System.out.println("*****************");
 
         for (int i = 0; i < nodeNames.length; i++){
             System.out.println("Node: " + nodeNames[i]);
+            System.out.println(" ");
 
             boolean childExist = graphChildren.get(i) != null;
             
@@ -80,6 +82,7 @@ public class Graph {
                 }
             } else System.out.println("No Childs.");
 
+            System.out.println("*****************");
         }
 
     }

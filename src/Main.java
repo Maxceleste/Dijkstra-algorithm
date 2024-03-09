@@ -6,28 +6,33 @@ public class Main{
 
     public static void main(String[] args){
 
-        Graph grafo = new Graph(4);
+        Graph grafo = new Graph(6);
 
-        Children childInicio = new Children(new String[]{"A", "B"},
-                                            new double[]{6.0, 2.0});
+        Children childLivro = new Children(new String[]{"poster", "lp raro"},
+                                            new double[]{0.0, 5.0});
+        Children childPoster = new Children(new String[]{"bateria", "baixo"},
+                                            new double[]{35.0, 30.0});
+        Children childLpRaro = new Children(new String[]{"bateria", "baixo"},
+                                            new double[]{20.0, 15.0});
+        Children childBateria = new Children(new String[]{"piano"},
+                                            new double[]{10.0});
+        Children childBaixo = new Children(new String[]{"piano"},
+                                            new double[]{20.0});
 
-        Children childA = new Children(new String[]{"fim"}, 
-                                       new double[]{1.0});
-                                       
-        Children childB = new Children(new String[]{"fim", "A"},
-                                       new double[]{5.0, 3.0});
-        Children childFim = null;
 
-        grafo.addNode("inicio", childInicio);
-        grafo.addNode("A", childA);
-        grafo.addNode("B", childB);
-        grafo.addNode("fim", childFim);
+        grafo.addNode("livro", childLivro);
+        grafo.addNode("poster", childPoster);
+        grafo.addNode("lp raro", childLpRaro);
+        grafo.addNode("bateria", childBateria);
+        grafo.addNode("baixo", childBaixo);
+        grafo.addNode("piano", null);
+
         
-        grafo.graphVisualiser();
+        //grafo.graphVisualiser();
 
         Dijkstra d = new Dijkstra();
 
-        d.runDijkstra(grafo, "fim");
+        d.runDijkstra(grafo, "piano");
     }
     
 }
