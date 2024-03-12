@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Graph {
 
     private String[] nodeNames;
-    private ArrayList<Children> graphChildren = new ArrayList<>();
+    private ArrayList<Children> graphChildren;
 
     private int nodeCount;
 
@@ -17,6 +17,7 @@ public class Graph {
     */
     public Graph(int nodeCount){
         nodeNames = new String[nodeCount];
+        graphChildren = new ArrayList<>(nodeCount);
     }
 
     /**
@@ -51,7 +52,7 @@ public class Graph {
             index++;
         }
 
-        if (index + 1 > nodeNames.length) throw new IllegalArgumentException("This node name doesn't exist.");
+        if (index  >= nodeNames.length) throw new IllegalArgumentException("This node name doesn't exist.");
 
         return graphChildren.get(index);
     }

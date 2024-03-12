@@ -9,9 +9,9 @@ public class Children{
     private double[] weights;
 
     /**
-     * The names and weigth needs to be the same size and order.
+     * The names and weight needs to be the same size and order.
      * @param childNames Array of children names
-     * @param weights Array of children weigth.
+     * @param weights Array of children weight.
      */
     public Children(String[] childNames, double[] weights){
 
@@ -51,7 +51,7 @@ public class Children{
         int index = 0;
 
         for (String name : childNames){
-            if (name == childName) break;
+            if (name.equals(childName)) break;
             index++;
         }
         if (index + 1 > childNames.length) throw new IllegalArgumentException("This child name doesn't exist.");

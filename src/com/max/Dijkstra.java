@@ -3,12 +3,20 @@ package src.com.max;
 import java.util.Arrays;
 import java.util.HashMap;
 
+/**
+ * Dijkstra Algorithm for the Graph class. Use the method runDijkstra to find the short path.
+ */
 public class Dijkstra {
 
     private final double INFINITY = 1.0 / 0.0;
-    HashMap<String, Double> cost;
-    HashMap<String, String> parents;
-   
+    private HashMap<String, Double> cost;
+    private HashMap<String, String> parents;
+
+    /**
+     * Run Dijkstra algorithm and show in the console the result
+     * @param graph The graph to find the shorter path
+     * @param lastNode The destination to find the shorter path
+     */
     public void runDijkstra(Graph graph, String lastNode){
 
         buildCost(graph); // building Cost table
@@ -27,6 +35,11 @@ public class Dijkstra {
         printResult(lastNode);
     }
 
+    /**
+     * 
+     * @param graph 
+     * @param nodeName Node to look and update the cost and parents of the children
+     */
     private void updateGeneral(Graph graph, String nodeName){
 
         Double parentCost = 0.0;
@@ -47,6 +60,12 @@ public class Dijkstra {
         }
     }
 
+    /**
+     * Return the next node to look in the loop of the algorithm. The next node will be the cheaper and not precessed node
+     * @param processedNodes array of processed nodes
+     * @param graph 
+     * @return The next node to process
+     */
     private String nextNode (String[] processedNodes, Graph graph){
         String cheapNode = null;
 
@@ -61,7 +80,10 @@ public class Dijkstra {
         }
         return cheapNode;
     }
-
+    /**
+     * Initializing the cost HashMap.
+     * @param graph
+     */
     private void buildCost(Graph graph){
 
         String[] nodes = graph.getNodesNames();
@@ -77,10 +99,13 @@ public class Dijkstra {
 
             Double newCost = children.getWeight(childName);
             cost.replace(childName, newCost);
-
         }
     }
 
+    /**
+     * Initializing the parents HashMap.
+     * @param graph
+     */
     private void buildParents(Graph graph){
 
         parents = new HashMap<>(graph.getLength() - 1);
@@ -97,6 +122,10 @@ public class Dijkstra {
         }
     }
 
+    /**
+     * Show the final results of the algorithm.
+     * @param lastNode The last node of the path.
+     */
     private void printResult(String lastNode){
 
         String last = lastNode;
