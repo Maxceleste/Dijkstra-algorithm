@@ -20,7 +20,7 @@ Certifique-se de ter o Java instalado em sua máquina. Caso contrário, você po
 Compile e execute o código Java. Exemplo de uso do algoritmo de Dijkstra:
 
 ```java
-Graph grafo = new Graph(6);
+        Graph grafo = new Graph(6);
 
         Children childLivro = new Children(new String[]{"poster", "lp raro"},
                                             new double[]{0.0, 5.0});
